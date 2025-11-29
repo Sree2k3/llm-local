@@ -32,34 +32,36 @@ Everything is coded manually—**no HuggingFace model classes**.
 ---
 
 ## 📂 Repository Structure
-'''
+
+```text
 llm-local/
 ├── configs/
-│ └── small.json # Model config
+│   └── small.json               # Model config
 │
 ├── data/
-│ ├── raw/ # Raw .txt files for tokenizer + training
-│ ├── processed/ # Preprocessed binary/token files
-│ └── tokenizer/ # SentencePiece tokenizer outputs
+│   ├── raw/                     # Raw .txt files for tokenizer + training
+│   ├── processed/               # Preprocessed binary/token files
+│   └── tokenizer/               # SentencePiece tokenizer outputs
 │
 ├── scripts/
-│ ├── preprocess.bat # Tokenizer training script
-│ └── run_train.bat # Training runner
+│   ├── preprocess.bat           # Tokenizer training script
+│   └── run_train.bat            # Training runner
 │
 ├── src/
-│ ├── model/
-│ │ └── transformer.py # Full GPT model from scratch
-│ │
-│ ├── server/
-│ │ └── server.py # FastAPI inference server
-│ │
-│ ├── data_pipeline.py # Dataset + dataloader
-│ ├── tokenizer.py # SentencePiece tokenizer builder
-│ └── train.py # Training loop + AMP + checkpoints
+│   ├── model/
+│   │   └── transformer.py       # Full GPT model from scratch
+│   │
+│   ├── server/
+│   │   └── server.py            # FastAPI inference server
+│   │
+│   ├── data_pipeline.py         # Dataset + dataloader
+│   ├── tokenizer.py             # SentencePiece tokenizer builder
+│   └── train.py                 # Training loop + AMP + checkpoints
 │
 └── requirements.txt
+```
 
-'''
+
 
 ---
 
