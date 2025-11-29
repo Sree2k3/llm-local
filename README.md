@@ -1,4 +1,4 @@
-<h1 align="center">🚀 MiniGPT — Train Your Own GPT Model from Scratch</h1>
+<h1 align="center"> MiniGPT — Train Your Own GPT Model from Scratch</h1>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Python-3.10-blue?logo=python" />
@@ -33,7 +33,6 @@ Everything is coded manually—**no HuggingFace model classes**.
 
 ## 📂 Repository Structure
 llm-local/
-│
 ├── configs/
 │ └── small.json # Model config
 │
@@ -49,14 +48,15 @@ llm-local/
 ├── src/
 │ ├── model/
 │ │ └── transformer.py # Full GPT model from scratch
+│ │
 │ ├── server/
 │ │ └── server.py # FastAPI inference server
+│ │
 │ ├── data_pipeline.py # Dataset + dataloader
 │ ├── tokenizer.py # SentencePiece tokenizer builder
 │ └── train.py # Training loop + AMP + checkpoints
 │
 └── requirements.txt
-
 
 ---
 
