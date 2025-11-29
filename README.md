@@ -32,6 +32,7 @@ Everything is coded manually—**no HuggingFace model classes**.
 ---
 
 ## 📂 Repository Structure
+'''
 llm-local/
 ├── configs/
 │ └── small.json # Model config
@@ -57,6 +58,8 @@ llm-local/
 │ └── train.py # Training loop + AMP + checkpoints
 │
 └── requirements.txt
+
+'''
 
 ---
 
