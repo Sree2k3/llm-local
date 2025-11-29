@@ -1,0 +1,13 @@
+torch
+transformers
+tokenizers
+sentencepiece
+datasets
+accelerate
+peft
+safetensors
+einops
+fastapi
+uvicorn
+wandb
+tqdm

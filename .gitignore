@@ -1,0 +1,51 @@
+# ---- Python ----
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+*.egg
+
+# ---- Environments ----
+.env
+.venv
+env/
+venv/
+llm-local/
+anaconda3/
+
+# ---- VS Code ----
+.vscode/
+.history/
+
+# ---- Logs ----
+*.log
+logs/
+wandb/
+tensorboard/
+*.out
+
+# ---- Data ----
+data/raw/*
+data/processed/*
+data/tokenizer/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# ---- Checkpoints ----
+checkpoints/
+*.pth
+*.ckpt
+
+# ---- OS files ----
+Thumbs.db
+.DS_Store
+
+# ---- Cache ----
+.cache/
+.tmp/
+*.tmp
+
+# ---- JSON configs auto-generated or large ----
+*.json.tmp
