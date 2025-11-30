@@ -1,32 +1,50 @@
 # src/tokenizer.py
 import sentencepiece as spm
+import argparse
 import os
 
 
 def train_sentencepiece(
-    input_files, model_prefix="data/tokenizer/spm", vocab_size=20000, model_type="bpe"
+    input_path, model_prefix="data/tokenizer/spm", vocab_size=5000, model_type="bpe"
 ):
     os.makedirs(os.path.dirname(model_prefix), exist_ok=True)
-    concat_path = os.path.join(os.path.dirname(model_prefix), "input_for_spm.txt")
-    with open(concat_path, "w", encoding="utf-8") as fw:
-        for p in input_files:
-            with open(p, "r", encoding="utf-8", errors="ignore") as fr:
-                for line in fr:
-                    line = line.strip()
-                    if line:
-                        fw.write(line + "\n")
     spm.SentencePieceTrainer.Train(
-        f"--input={concat_path} --model_prefix={model_prefix} --vocab_size={vocab_size} --model_type={model_type} --character_coverage=1.0"
+        f"--input={input_path} "
+        f"--model_prefix={model_prefix} "
+        f"--vocab_size={vocab_size} "
+        f"--model_type={model_type} "
+        f"--character_coverage=1.0 "
+        f"--pad_id=0 --unk_id=1 --bos_id=2 --eos_id=3"
     )
-    print(f"Trained sentencepiece model: {model_prefix}.model / .vocab")
+    print(
+        f"Tokenizer trained successfully → {model_prefix}.model and {model_prefix}.vocab"
+    )
+
+
+def load_tokenizer(model_path):
+    sp = spm.SentencePieceProcessor()
+    sp.load(model_path)
+    return sp
+
+
+def decode_tokens(sp, ids):
+    return sp.decode_ids(ids)
 
 
 if __name__ == "__main__":
-    raw_dir = "data/raw"
-    files = [
-        os.path.join(raw_dir, f) for f in os.listdir(raw_dir) if f.endswith(".txt")
-    ]
-    if not files:
-        print("No input .txt files in data/raw. Add some and rerun.")
-    else:
-        train_sentencepiece(files, model_prefix="data/tokenizer/spm", vocab_size=20000)
+    p = argparse.ArgumentParser()
+    p.add_argument("--input", type=str, default="data/raw/corpus.txt")
+    p.add_argument("--vocab_size", type=int, default=5000)
+    p.add_argument("--model_prefix", type=str, default="data/tokenizer/spm")
+    p.add_argument("--model_type", type=str, default="bpe")
+    args = p.parse_args()
+
+    if not os.path.exists(args.input):
+        raise SystemExit(f"❌ Input file not found: {args.input}")
+
+    train_sentencepiece(
+        args.input,
+        model_prefix=args.model_prefix,
+        vocab_size=args.vocab_size,
+        model_type=args.model_type,
+    )

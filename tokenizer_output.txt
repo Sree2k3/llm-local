@@ -1,0 +1,180 @@
+sentencepiece_trainer.cc(178) LOG(INFO) Running command: --input=data/raw/corpus.txt --model_prefix=data/tokenizer/spm --vocab_size=5000 --model_type=bpe --character_coverage=1.0 --pad_id=0 --unk_id=1 --bos_id=2 --eos_id=3
+sentencepiece_trainer.cc(78) LOG(INFO) Starts training with : 
+trainer_spec {
+  input: data/raw/corpus.txt
+  input_format: 
+  model_prefix: data/tokenizer/spm
+  model_type: BPE
+  vocab_size: 5000
+  self_test_sample_size: 0
+  character_coverage: 1
+  input_sentence_size: 0
+  shuffle_input_sentence: 1
+  seed_sentencepiece_size: 1000000
+  shrinking_factor: 0.75
+  max_sentence_length: 4192
+  num_threads: 16
+  num_sub_iterations: 2
+  max_sentencepiece_length: 16
+  split_by_unicode_script: 1
+  split_by_number: 1
+  split_by_whitespace: 1
+  split_digits: 0
+  pretokenization_delimiter: 
+  treat_whitespace_as_suffix: 0
+  allow_whitespace_only_pieces: 0
+  required_chars: 
+  byte_fallback: 0
+  vocabulary_output_piece_score: 1
+  train_extremely_large_corpus: 0
+  seed_sentencepieces_file: 
+  hard_vocab_limit: 1
+  use_all_vocab: 0
+  unk_id: 1
+  bos_id: 2
+  eos_id: 3
+  pad_id: 0
+  unk_piece: <unk>
+  bos_piece: <s>
+  eos_piece: </s>
+  pad_piece: <pad>
+  unk_surface:  ⁇ 
+  enable_differential_privacy: 0
+  differential_privacy_noise_level: 0
+  differential_privacy_clipping_threshold: 0
+}
+normalizer_spec {
+  name: nmt_nfkc
+  add_dummy_prefix: 1
+  remove_extra_whitespaces: 1
+  escape_whitespaces: 1
+  normalization_rule_tsv: 
+}
+denormalizer_spec {}
+trainer_interface.cc(355) LOG(INFO) SentenceIterator is not specified. Using MultiFileSentenceIterator.
+trainer_interface.cc(186) LOG(INFO) Loading corpus: data/raw/corpus.txt
+trainer_interface.cc(411) LOG(INFO) Loaded all 53 sentences
+trainer_interface.cc(427) LOG(INFO) Adding meta_piece: <pad>
+trainer_interface.cc(427) LOG(INFO) Adding meta_piece: <unk>
+trainer_interface.cc(427) LOG(INFO) Adding meta_piece: <s>
+trainer_interface.cc(427) LOG(INFO) Adding meta_piece: </s>
+trainer_interface.cc(432) LOG(INFO) Normalizing sentences...
+trainer_interface.cc(541) LOG(INFO) all chars count=2644
+trainer_interface.cc(562) LOG(INFO) Alphabet size=66
+trainer_interface.cc(563) LOG(INFO) Final character coverage=1
+trainer_interface.cc(594) LOG(INFO) Done! preprocessed 53 sentences.
+trainer_interface.cc(600) LOG(INFO) Tokenizing input sentences with whitespace: 53
+trainer_interface.cc(611) LOG(INFO) Done! 239
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=50 min_freq=1
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=15 size=20 all=600 active=534 piece=▁and
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=9 size=40 all=750 active=684 piece=del
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=7 size=60 all=837 active=771 piece=ame
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=5 size=80 all=882 active=816 piece=("
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=5 size=100 all=905 active=839 piece=▁return
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=5 min_freq=0
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=4 size=120 all=944 active=878 piece=ken
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=3 size=140 all=971 active=905 piece=mm
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=3 size=160 all=997 active=931 piece=▁be
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=3 size=180 all=1015 active=949 piece=▁pro
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=2 size=200 all=1016 active=950 piece=PU
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=2 min_freq=0
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=2 size=220 all=1041 active=975 piece=Wel
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=2 size=240 all=1058 active=992 piece=rti
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=2 size=260 all=1070 active=1004 piece=▁su
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=2 size=280 all=1078 active=1012 piece=▁can
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=2 size=300 all=1076 active=1010 piece=▁Keep
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=2 min_freq=0
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=2 size=320 all=1069 active=994 piece=▁logic
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=2 size=340 all=1061 active=986 piece=endencies
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=1 size=360 all=1052 active=977 piece=NN
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=1 size=380 all=1066 active=991 piece=ny
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=1 size=400 all=1072 active=997 piece=cip
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=1 min_freq=0
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=1 size=420 all=1086 active=1013 piece=ili
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=1 size=440 all=1097 active=1024 piece=tor
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=1 size=460 all=1096 active=1023 piece=ange
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=1 size=480 all=1109 active=1036 piece=igns
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=1 size=500 all=1120 active=1047 piece=uman
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=1 min_freq=0
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=1 size=520 all=1111 active=991 piece=▁stu
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=1 size=540 all=1111 active=991 piece=▁LLMs
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=1 size=560 all=1100 active=980 piece=▁repl
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=1 size=580 all=1094 active=974 piece=proves
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=1 size=600 all=1082 active=962 piece=▁lives
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=1 min_freq=0
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=1 size=620 all=1072 active=991 piece=▁better
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=1 size=640 all=1059 active=978 piece=▁Natural
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=1 size=660 all=1043 active=962 piece=mendation
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=1 size=680 all=1026 active=945 piece=▁pipeline
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=1 size=700 all=1007 active=926 piece=▁dedication
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=1 min_freq=0
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=1 size=720 all=987 active=921 piece=▁architectures
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=740 all=967 active=901 piece=LL
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=760 all=947 active=881 piece=Tr
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=780 all=927 active=861 piece=ct
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=800 all=907 active=841 piece=ff
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=820 all=887 active=821 piece=iv
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=840 all=867 active=801 piece=no
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=860 all=847 active=781 piece=pt
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=880 all=827 active=761 piece=ss
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=900 all=807 active=741 piece=vi
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=920 all=787 active=721 piece=▁i
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=940 all=767 active=701 piece=ani
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=960 all=747 active=681 piece=ctu
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=980 all=727 active=661 piece=eme
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1000 all=707 active=641 piece=hel
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1020 all=687 active=621 piece=ior
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1040 all=667 active=601 piece=lor
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1060 all=647 active=581 piece=now
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1080 all=627 active=561 piece=per
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1100 all=607 active=541 piece=ret
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1120 all=587 active=521 piece=ter
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1140 all=567 active=501 piece=ure
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1160 all=547 active=481 piece=▁16
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1180 all=527 active=461 piece=▁cl
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1200 all=507 active=441 piece=▁pe
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1220 all=487 active=421 piece=VIDI
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1240 all=467 active=401 piece=edge
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1260 all=447 active=381 piece=idly
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1280 all=427 active=361 piece=oken
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1300 all=407 active=341 piece=tipl
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1320 all=387 active=321 piece=▁You
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1340 all=367 active=301 piece=▁hel
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1360 all=347 active=281 piece=▁rep
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1380 all=327 active=261 piece=atten
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1400 all=307 active=241 piece=impro
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1420 all=287 active=221 piece=rapid
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1440 all=267 active=201 piece=▁alig
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1460 all=247 active=181 piece=▁opti
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1480 all=227 active=161 piece=cement
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1500 all=207 active=141 piece=proces
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1520 all=187 active=121 piece=▁deplo
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1540 all=167 active=101 piece=commend
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1560 all=147 active=81 piece=raining
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1580 all=127 active=61 piece=▁knowle
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1600 all=107 active=41 piece=standing
+bpe_model_trainer.cc(159) LOG(INFO) Updating active symbols. max_freq=0 min_freq=0
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1620 all=87 active=21 piece=▁Programm
+bpe_model_trainer.cc(268) LOG(INFO) Added: freq=0 size=1640 all=67 active=1 piece=▁Transformer
+bpe_model_trainer.cc(252) LOG(WARNING) No valid symbol found
+trainer_interface.cc(689) LOG(INFO) Saving model: data/tokenizer/spm.model
+Traceback (most recent call last):
+  File "C:\Users\ASUS\llm-local\src\tokenizer.py", line 35, in <module>
+    train_sentencepiece(
+  File "C:\Users\ASUS\llm-local\src\tokenizer.py", line 11, in train_sentencepiece
+    spm.SentencePieceTrainer.Train(
+  File "C:\Users\ASUS\anaconda3\envs\llm-local\lib\site-packages\sentencepiece\__init__.py", line 1047, in Train
+    SentencePieceTrainer._Train(arg=arg, **kwargs)
+  File "C:\Users\ASUS\anaconda3\envs\llm-local\lib\site-packages\sentencepiece\__init__.py", line 1003, in _Train
+    return SentencePieceTrainer._TrainFromString(arg)
+  File "C:\Users\ASUS\anaconda3\envs\llm-local\lib\site-packages\sentencepiece\__init__.py", line 981, in _TrainFromString
+    return _sentencepiece.SentencePieceTrainer__TrainFromString(arg)
+RuntimeError: Internal: D:\a\sentencepiece\sentencepiece\src\trainer_interface.cc(664) [(trainer_spec_.vocab_size()) == (model_proto->pieces_size())] Vocabulary size too high (5000). Please set it to a value <= 1710.
