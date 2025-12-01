@@ -1,50 +1,80 @@
 # src/tokenizer.py
 import sentencepiece as spm
-import argparse
 import os
 
 
 def train_sentencepiece(
-    input_path, model_prefix="data/tokenizer/spm", vocab_size=5000, model_type="bpe"
+    input_path: str,
+    model_prefix: str = "data/tokenizer/spm",
+    vocab_size: int = 1500,
+    model_type: str = "bpe",
+    character_coverage: float = 1.0,
+    pad_id: int = 0,
+    unk_id: int = 1,
+    bos_id: int = 2,
+    eos_id: int = 3,
 ):
+    """
+    Train SentencePiece model and save to model_prefix.model / .vocab
+    """
     os.makedirs(os.path.dirname(model_prefix), exist_ok=True)
-    spm.SentencePieceTrainer.Train(
-        f"--input={input_path} "
-        f"--model_prefix={model_prefix} "
-        f"--vocab_size={vocab_size} "
-        f"--model_type={model_type} "
-        f"--character_coverage=1.0 "
-        f"--pad_id=0 --unk_id=1 --bos_id=2 --eos_id=3"
+    args = (
+        f"--input={input_path} --model_prefix={model_prefix} --vocab_size={vocab_size} "
+        f"--model_type={model_type} --character_coverage={character_coverage} "
+        f"--pad_id={pad_id} --unk_id={unk_id} --bos_id={bos_id} --eos_id={eos_id}"
     )
-    print(
-        f"Tokenizer trained successfully → {model_prefix}.model and {model_prefix}.vocab"
-    )
+    spm.SentencePieceTrainer.Train(args)
 
 
-def load_tokenizer(model_path):
-    sp = spm.SentencePieceProcessor()
-    sp.load(model_path)
-    return sp
+class SpmTokenizer:
+    """
+    Thin wrapper around SentencePieceProcessor with helpful methods.
+    """
+
+    def __init__(self, model_file: str):
+        if not os.path.exists(model_file):
+            raise FileNotFoundError(f"SentencePiece model not found: {model_file}")
+        self.sp = spm.SentencePieceProcessor()
+        self.sp.Load(model_file)
+        # expose a stable attribute
+        self.vocab_size = self.sp.get_piece_size()
+        # helpful ids
+        try:
+            self.pad_id = self.sp.piece_to_id("<pad>")
+            self.unk_id = self.sp.piece_to_id("<unk>")
+            self.bos_id = self.sp.piece_to_id("<s>")
+            self.eos_id = self.sp.piece_to_id("</s>")
+        except Exception:
+            # if tokens don't exist, fallback to defaults (may be 0..3)
+            self.pad_id = 0
+            self.unk_id = 1
+            self.bos_id = 2
+            self.eos_id = 3
+
+    # encode a text into list of ids
+    def encode(self, text: str):
+        return self.sp.EncodeAsIds(text)
+
+    # decode id list to text
+    def decode(self, ids):
+        return self.sp.DecodeIds(ids)
+
+    # convenience: encode many lines to a flat id list with eos between lines
+    def encode_lines(self, lines, append_eos=True):
+        out = []
+        for ln in lines:
+            ids = self.encode(ln)
+            if len(ids) == 0:
+                continue
+            out.extend(ids)
+            if append_eos:
+                out.append(self.eos_id)
+        return out
 
 
-def decode_tokens(sp, ids):
-    return sp.decode_ids(ids)
-
-
-if __name__ == "__main__":
-    p = argparse.ArgumentParser()
-    p.add_argument("--input", type=str, default="data/raw/corpus.txt")
-    p.add_argument("--vocab_size", type=int, default=5000)
-    p.add_argument("--model_prefix", type=str, default="data/tokenizer/spm")
-    p.add_argument("--model_type", type=str, default="bpe")
-    args = p.parse_args()
-
-    if not os.path.exists(args.input):
-        raise SystemExit(f"❌ Input file not found: {args.input}")
-
-    train_sentencepiece(
-        args.input,
-        model_prefix=args.model_prefix,
-        vocab_size=args.vocab_size,
-        model_type=args.model_type,
-    )
+def load_tokenizer(model_path: str = "data/tokenizer/spm.model"):
+    """
+    Returns an SpmTokenizer instance.
+    Use explicit model file path (not directory).
+    """
+    return SpmTokenizer(model_path)
