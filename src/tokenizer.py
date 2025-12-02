@@ -6,7 +6,7 @@ import os
 def train_sentencepiece(
     input_path: str,
     model_prefix: str = "data/tokenizer/spm",
-    vocab_size: int = 1500,
+    vocab_size: int = 3000,
     model_type: str = "bpe",
     character_coverage: float = 1.0,
     pad_id: int = 0,

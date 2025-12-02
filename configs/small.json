@@ -1,8 +1,8 @@
 {
-    "vocab_size": 1500,
+    "vocab_size": 3000,
     "seq_len": 32,
-    "n_layer": 2,
-    "d_model": 128,
+    "n_layer": 3,
     "n_head": 4,
-    "ff_dim": 512
+    "d_model": 192,
+    "ff_dim": 768
 }
