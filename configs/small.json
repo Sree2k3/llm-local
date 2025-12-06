@@ -1,5 +1,5 @@
 {
-    "vocab_size": 3000,
+    "vocab_size": 1500,
     "seq_len": 32,
     "n_layer": 3,
     "n_head": 4,
